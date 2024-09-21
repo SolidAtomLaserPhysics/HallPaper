@@ -1,0 +1,2 @@
+julia /scratch/projects/hhp00048/codes/scripts/LadderDGA_utils/fitAndersonParams_2.jl U2.0_mu1.0_beta30.0_DMFT-2023-03-15-Wed-14-41-21.hdf5 30.0 2.0 1.0 6 hubb.andpar_2
+julia /scratch/projects/hhp00048/codes/scripts/LadderDGA_utils/ncorr.jl U2.0_mu1.0_beta30.0_DMFT-2023-03-15-Wed-14-41-21.hdf5 

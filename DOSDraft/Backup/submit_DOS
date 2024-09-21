@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 12:00:00
+#SBATCH -N 13
+#SBATCH --ntasks-per-node 96
+#SBATCH -p standard96
+#SBATCH -A hhpnhytt
+
+module load intel/2022.2.1 impi/2021.7.1
+
+export I_MPI_PIN_RESPECT_CPUSET=off
+export I_MPI_DEBUG=6
+export MKL_SERIAL=yes
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+
+mpirun -np 1200 ./DensityOfStatesGreensFunctionsNonIntAtomicLimit.x > Out.dat

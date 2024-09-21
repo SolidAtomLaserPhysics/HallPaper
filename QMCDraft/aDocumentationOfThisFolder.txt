@@ -1,0 +1,22 @@
+This folder contains some helper programmes to process and schedule QMC data on the HLRN
+
+
+
+
+THIS FOLDER now is the MainFolder for the final Automatic QMC Setup
+
+
+
+
+
+
+
+
+status now:
+is a wrapper but should be used to test it
+
+New since 19.6.23:
+Built in mu as parameter for QMC
+
+Missing
+Test and use it

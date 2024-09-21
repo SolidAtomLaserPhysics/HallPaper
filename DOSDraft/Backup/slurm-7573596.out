@@ -1,0 +1,10 @@
+Module for Intel oneAPI Compilers and Libraries (compiler version 2022 Update 2 Patch 1) loaded.
+Module for Intel-MPI (version 2021.7.1) loaded.
+============ Job Information ===================================================
+Submitted: 2024-01-02T16:59:57
+Started: 2024-01-02T16:59:58
+Ended: 2024-01-02T17:00:11
+Elapsed: 1 min, Limit: 720 min, Difference: 719 min
+(HT-)CPUs: 2496, Nodes: 13
+Estimated core-h: 4.4936
+================================================================================

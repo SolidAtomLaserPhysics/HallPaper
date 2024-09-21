@@ -1,0 +1,57 @@
+[General]                                                                                                                                                                                     
+DOS             = ReadIn                                                                                                                                                                      
+NAt             = 3 #q des Magnetfeldes p/q                                                                                                                                                                          
+EPSEQ           = 0.000001                                                                                                                                                                       
+HkFile          = Hk_Hofstadter.dat #-> aender auf meinen Fall.                                                                                                                               
+beta            = 30.0 #-> In Einheiten 1/t.                                                                                                                                                  
+#totdens        = 1.0  # el/d-at                                                                                                                                                              
+mu              = 1.000000000000000000                                                                                                                                                       
+#EPSN           = 0.0                                                                                                                                                                         
+#readold         = -1 #-> Im ersten Schritt auskommentieren, sagt mir wo ich bei Abbruch weiterrechnen soll. -1 ist z.B. die letzte Iteration wenn die Rechnung durchgelaufen ist.             
+#fileold         = U2.0_mu1.0_beta30.0_DMFT.hdf5 #-> Hier wird jede Iteration gespeichert. Von dort kann ich weiterrechnen.                                           
+DMFTsteps       = 20 #-> Anzahl der DMFT loops       
+#StatisticSteps  = 1 #-> 1 berechnet den Vertex. Für die DMFT Rechnung auf 0 setzen. Für \xhi_phys auf 1 und MeasSusz (siehe unten) auf 1 (aber ohne Parameter für 2-Teilchen Rechnung).      
+magnetism       = para                                                                                                                                                                        
+FileNamePrefix  = U2.0_mu1.0_beta30.0_DMFT                                                                                                                                                   
+mixing          = 0.2 #-> 0.2 wird von der alten Iteration verwendet.                                                                                                                         
+                                                                                                                                                                                              
+FTType          = none #-> Ergebnis wird durch Legendre Polynome dargestellt. Siehe: NLegMax und MeasSusz weiter unten.                                                                       
+                                                                                                                                                                                              
+[Atoms]                                                                                                                                                                                       
+[[1]]                                                                                                                                                                                         
+Hamiltonian     = Density               
+Nd              = 1                                                                                                                                                                           
+Udd             = 2.0 #-> Hubbard U                                                                                                                                                                    
+[[2]]                                                                                                                                                                                         
+Hamiltonian     = Density                                                                                                                                                                     
+Nd              = 1                                                                                                                                                                           
+Udd             = 2.0 #-> Hubbard U   
+[[3]]                                                                                                                                                                                         
+Hamiltonian     = Density                                                                                                                                                                     
+Nd              = 1                                                                                                                                                                           
+Udd             = 2.0 #-> Hubbard U   
+                                                                                                                                                                                              
+[QMC]                                                                                                                                                                                         
+Eigenbasis      = 1                                                                                                                                                                           
+                                                                                                                                                                                              
+Nwarmups        = 1e7                                                                                                                                                                         
+Nmeas           = 1e5   
+NCorr           = 30 #-> Wie viele Schritte zwischen zwei Messungen.                                                                                                                         
+                                                                                                                                                                                              
+NLookup_nfft    = 10000000       #wirklich der hoechste Wert ohne Crash!!!                                                                                                                                                              
+                                                                                                                                                                                              
+Ntau            = 2000           # # of points in tau  ->  Nur für Ausgabe wichtig!                                                                                                            
+Niw             = 1000           # # of matsubara freq.                                                                                                                                        
+#Nftau           = 701                                                                                                                                                                        
+#NLegMax         = 1             # Max number of Legendre Polys                                                                                                                                
+#NLegOrder      = 30            # order used
+                                                                                                                                                                                              
+MeasGiw = 1  # -> G(i\omega) wird gemessen.                                                                                                                                                   
+#MeasSusz = 1 #-> Einschalten, um physikalische Suszeptibilitäten zu messen. Achtung in imaginären Zeiten (\chi(\tau))                                                                        
+                                                                                                                                                                                              
+#FourPnt = 4 #-> G_2 wird gemessen. Für nur DMFT auskommentieren.                                                                                                                             
+#MeasG4iwPP = 1 #-> G_2 in pp-notation wird gemessen.                                                                                                                                         
+#N4iwf = 50 #-> Anzahl fermionischer Frequenzen für 2-Teilchen GF.                                                                                                                            
+#N4iwb = 0 #-> Anzahl bosonischer Frequenzen für 2-Teilchen GF.                                                                                                                               
+                                                                                                                                                                                              
+segment=1

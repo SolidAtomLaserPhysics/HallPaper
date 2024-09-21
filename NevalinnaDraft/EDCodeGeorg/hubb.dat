@@ -1,0 +1,16 @@
+c  U,   hmag
+ 1.50d0,  0.d0
+c beta, w_min, w_max, deltino
+ 30.0d0, -12.0, 12.0, 0.01
+c ns,imaxmu,deltamu, # iterations, conv.param.
+ 7, 0, 0.d0, 250,  1.d-12
+c ifix(0,1), <n>,   inew, iauto 
+   0  , 1.0d0,   1,    1,   
+c  th0 , iexp (insignificant)
+  1.d-4, 1
+c nmin, nmax
+3 , 7
+c lambda, w0, nph
+0.0, 0.4, 4
+1
+

@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH -t 01:00:00
+#SBATCH -N 10
+#SBATCH --ntasks-per-node 96
+#SBATCH -p standard96
+#SBATCH -A hhp00048
+
+module load intel/2022.2.1 impi/2021.7.1
+
+export SLURM_CPU_BIND=none
+export I_MPI_PIN_RESPECT_CPUSET=off
+export I_MPI_DEBUG=6
+export MKL_SERIAL=yes
+export MKL_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+
+i=0
+
+
+start=0.99
+
+while [ $i -le 19 ]
+do
+    n=$(echo "scale=2; $start-$i/100" | bc -l | sed 's/^\./0./')
+    nold=$(echo "scale=2; $start-$i/100+0.01" | bc -l | sed 's/^\./0./')
+    echo $n"     "$nold
+    ndir=n$n
+    nolddir=n$nold
+    echo $ndir"     "$nolddir
+    cp $nolddir/hubb.andpar $ndir/hubb.andpar_start
+    cp $nolddir/hubb.andpar $ndir/hubb.andpar
+    cd $ndir/
+    sed '8s/n/'$n'0d0/' hubb.dat > temp
+    mv temp hubb.dat
+    mpirun -np 960 ./ed_dmft_parallel_frequencies.x > ./DMFTout.dat 2> ./DMFTerror.dat
+    cd ..
+    i=$((i+1))
+done
